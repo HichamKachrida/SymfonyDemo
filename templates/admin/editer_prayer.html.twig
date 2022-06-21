@@ -1,0 +1,84 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Gestion des prières{% endblock %}
+
+{% block stylesheets %}
+    <link href="assets/css/pages/todo/todo.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container ">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">
+                    Gestion des prières </h3>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="{{ url('admin') }}" class="kt-subheader__breadcrumbs-link">
+                        Tableau de bord </a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="{{ url('gestion_prieres') }}" class="kt-subheader__breadcrumbs-link">
+                        Gestion des prières </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end:: Subheader -->
+
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <!--begin::Portlet-->
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Editer une prière
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!--begin::Form-->
+                    {{ form_start(form, {'attr' : {'class' : 'kt-form'}}) }}
+                    <div class="kt-portlet__body">
+                        <div class="form-group">
+                            <label>Titre de la prière</label>
+                            {{ form_widget(form.title, {'attr' : {'class' : 'form-control', 'placeholder' : 'Veuillez entrer un titre'}}) }}
+                        </div>
+                        <div class="form-group form-group-last">
+                            <label for="cours_content">Contenu de la prière</label>
+                            {{ form_widget(form.content, {'attr' : {'rows' : '15', 'class' : 'form-control', 'placeholder' : 'Veuillez entrer un contenu'}}) }}
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button class="btn btn-primary">Enregister la prière</button>
+                            <button class="btn btn-secondary" onclick="history.back()">Annuler</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+
+                    <!--end::Form-->
+                </div>
+
+                <!--end::Portlet-->
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end:: Content -->
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="assets/js/pages/custom/todo/todo.js" type="text/javascript"></script>
+{% endblock %}

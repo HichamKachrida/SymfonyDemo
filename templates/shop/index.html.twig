@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique en ligne{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="iq-card position-relative inner-page-bg bg-primary" style="height: 150px;">
+                        <div class="inner-page-title">
+                            <h3 class="text-white">Boutique en ligne</h3>
+                            <p class="text-white">Retrouvez tous nos produits phares</p>
+                        </div>
+                    </div>
+                </div>
+
+                {% for product in products %}
+                <div class="col-sm-12 col-lg-6">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">{{ product.title }}</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <p>{{ product.content }}</p>
+                            <img src="{{ 'uploads/medias/' ~asset(product.media.file) }}" class="img-fluid" alt="{{ product.title }}"><br><br>
+                            <button type="button" class="btn btn-primary btn-block">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Wrapper END -->
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

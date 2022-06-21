@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messagerie{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container relative">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="iq-card">
+                        <div class="iq-card-body">
+                            <div class="">
+                                <div class="iq-email-list">
+                                    <button class="btn btn-primary btn-lg btn-block mb-3 font-size-16 p-3" data-target="#compose-email-popup" data-toggle="modal"><i class="ri-send-plane-line mr-2"></i>Ecrire un message</button>
+                                    <div class="iq-email-ui nav flex-column nav-pills">
+                                        <li class="nav-link active" role="tab" data-toggle="pill" href="#mail-inbox"><a href="index.html"><i class="ri-mail-line"></i>Reception<span class="badge badge-primary ml-2">4</span></a></li>
+                                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-sent"><a href="#"><i class="ri-mail-send-line"></i>Envoyés</a></li>
+                                        <li class="nav-link" role="tab" data-toggle="pill" href="#mail-trash"><a href="#"><i class="ri-delete-bin-line"></i>Corbeille</a></li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 mail-box-detail">
+                    <div class="iq-card">
+                        <div class="iq-card-body p-0">
+                            <div class="">
+                                <div class="iq-email-to-list p-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="iq-email-search d-flex">
+                                            <form class="mr-3 position-relative">
+                                                <div class="form-group mb-0">
+                                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Rechercher">
+                                                    <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="iq-email-listbox">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="mail-inbox" role="tabpanel">
+                                            <ul class="iq-email-sender-list">
+                                                <li class="iq-unread">
+                                                    <div class="d-flex align-self-center">
+                                                        <div class="iq-email-sender-info">
+                                                            <div class="iq-checkbox-mail">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input" id="mailk">
+                                                                    <label class="custom-control-label" for="mailk"></label>
+                                                                </div>
+                                                            </div>
+                                                            <a href="javascript: void(0);" class="iq-email-title">Hicham Kachrida</a>
+                                                        </div>
+                                                        <div class="iq-email-content">
+                                                            <a href="javascript: void(0);" class="iq-email-subject">Salut Sidonie, je t'envoie un message! &nbsp;–&nbsp;
+                                                            </a>
+                                                            <div class="iq-email-date">08:00</div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <div class="email-app-details">
+                                                    <div class="iq-card">
+                                                        <div class="iq-card-body p-0">
+                                                            <div class="iq-email-to-list p-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <ul>
+                                                                        <li class="mr-3">
+                                                                            <a href="javascript: void(0);">
+                                                                                <h4 class="m-0"><i class="ri-arrow-left-line"></i></h4>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="">
+                                                                <hr class="mt-0">
+                                                                <div class="iq-inbox-subject p-3">
+                                                                    <h5 class="mt-0">Test de message réussi!</h5>
+                                                                    <div class="iq-inbox-subject-info">
+                                                                        <div class="iq-subject-info">
+                                                                            <img src="../images/user/user-1.jpg" class="img-fluid rounded-circle" alt="#">
+                                                                            <div class="iq-subject-status align-self-center">
+                                                                                <h6 class="mb-0">Hicham Kachrida</h6>
+                                                                                <div class="dropdown">
+                                                                                    <h6 class="mb-0">
+                                                                                        Sidonie Bois
+                                                                                    </h6>
+                                                                                </div>
+                                                                            </div>
+                                                                            <span class="float-right align-self-center">Jan 15, 2029, 10:20AM</span>
+                                                                        </div>
+                                                                        <div class="iq-inbox-body mt-5">
+                                                                            <p>Bonjour Sidonie,</p>
+                                                                            <p>Ce message pour te dire que la messagerie est en cours de developpement.</p>
+                                                                        </div>
+                                                                        <hr>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="compose-email-popup" class="compose-popup modal modal-sticky-bottom-right modal-sticky-lg">
+                    <div class="iq-card iq-border-radius-20 mb-0">
+                        <div class="iq-card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-12 mb-3">
+                                    <h5 class="text-primary float-left"><i class="ri-pencil-fill"></i> Ecrire un message</h5>
+                                    <button type="submit" class="float-right close-popup" data-dismiss="modal"><i class="ri-close-fill"></i></button>
+                                </div>
+                            </div>
+                            <form class="email-form">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Destinataire:</label>
+                                    <div class="col-sm-10">
+                                        <select  id="inputEmail3" class="select2jsMultiSelect form-control" multiple="multiple">
+                                            <option value="Petey Cruiser">Petey Cruiser</option>
+                                            <option value="Bob Frapples">Bob Frapples</option>
+                                            <option value="Barb Ackue">Barb Ackue</option>
+                                            <option value="Greta Life">Greta Life</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="subject" class="col-sm-2 col-form-label">Message:</label>
+                                    <div class="col-md-10">
+                                        <textarea class="textarea form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row align-items-center compose-bottom pt-3 m-0">
+                                    <div class="d-flex flex-grow-1 align-items-center">
+                                        <div class="send-btn">
+                                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Wrapper END -->
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="iq-card">
+                        <div class="iq-card-body profile-page p-0">
+                            <div class="profile-header">
+                                <div class="cover-container">
+                                    <img src="images/page-img/profile-bg1.jpg" alt="profile-bg" class="rounded img-fluid">
+                                    <ul class="header-nav d-flex flex-wrap justify-end p-0 m-0">
+                                        <li><a href="javascript:void();"><i class="ri-pencil-line"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="user-detail text-center mb-3">
+                                    <div class="profile-img">
+                                        {% if user.profilPic is null %}
+                                            <img src="images/user/base.jpg" alt="profile-img" class="avatar-130 img-fluid" />
+                                        {% else %}
+                                            <img src="{{ 'uploads/medias/' ~asset(user.profilPic.file) }}" alt="profile-img" class="avatar-130 img-fluid" />
+                                        {% endif %}
+                                    </div>
+                                    <div class="profile-detail">
+                                        <h3 class="">{{ user.username }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-info p-4 d-flex align-items-center justify-content-between position-relative">
+                                <div class="social-links">
+                                    {% if user.friendable is same as(true) %}
+                                    <a href="{{ path('add_friend', {'id' : user.id}) }}" class="mr-3 btn btn-primary rounded">Demander en ami</a>
+                                    {% endif %}
+
+                                    {% if user.friendable is same as('pending') %}
+                                        <a href="javascript:void();" class="mr-3 btn btn-secondary rounded">En attente</a>
+                                    {% endif %}
+                                </div>
+                                <div class="social-info">
+                                    <ul class="social-data-block d-flex align-items-center justify-content-between list-inline p-0 m-0">
+                                        <li class="text-center pl-3">
+                                            <h6>Post(s)</h6>
+                                            <p class="mb-0">{{ user.posts|length }}</p>
+                                        </li>
+                                        <li class="text-center pl-3">
+                                            <h6>Ami(s)</h6>
+                                            <p class="mb-0">{{ friendsCount|length }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 row m-0 p-0">
+                    <div class="col-sm-12">
+                        <div id="post-modal-data" class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-header d-flex justify-content-between">
+                                <div class="iq-header-title">
+                                    <h4 class="card-title">Poster vos idées</h4>
+                                </div>
+                            </div>
+                            <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img">
+                                        {% if app.user.profilPic is null %}
+                                            <img src="images/user/base.jpg" class="avatar-60 rounded-circle" alt="{{ app.user.username }}">
+                                        {% else %}
+                                            <img src="{{ 'uploads/medias/' ~asset(app.user.profilPic.file) }}" class="avatar-60 rounded-circle" alt="{{ app.user.username }}">
+                                        {% endif %}
+                                    </div>
+                                    <form class="post-text ml-3 w-100" action="javascript:void();">
+                                        <input type="text" class="form-control rounded" placeholder="Poster vos idées..." style="border:none;">
+                                    </form>
+                                </div>
+                                <hr>
+                                <ul class="post-opt-block d-flex align-items-center list-inline m-0 p-0">
+                                    <li class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#"></a><img src="images/small/07.png" alt="icon" class="img-fluid"> Photo/Video</li>
+                                </ul>
+                            </div>
+                            <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
+                                {{ form_start(form) }}
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="post-modalLabel">Poster vos idées</h5>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="ri-close-fill"></i></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="d-flex align-items-center">
+                                                <div class="user-img">
+                                                    {% if app.user.profilPic is null %}
+                                                        <img src="images/user/base.jpg" class="avatar-60 rounded-circle img-fluid" alt="{{ app.user.username }}">
+                                                    {% else %}
+                                                        <img src="{{ 'uploads/medias/' ~asset(app.user.profilPic.file) }}" class="avatar-60 rounded-circle img-fluid" alt="{{ app.user.username }}">
+                                                    {% endif %}
+                                                </div>
+                                                <form class="post-text ml-3 w-100" action="javascript:void();">
+                                                    {{ form_widget(form.content) }}
+                                                    {{ form_widget(form.media) }}
+                                                </form>
+                                            </div>
+                                            <hr>
+                                            <ul class="d-flex flex-wrap align-items-center list-inline m-0 p-0">
+                                                <li class="col-md-6 mb-3">
+                                                    <div class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#" id="post_media_openener"><img src="images/small/07.png" alt="icon" class="img-fluid"> Ajouter une photo</a></div>
+                                                </li>
+                                                <li class="col-md-6 mb-3">
+                                                    <div class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#"></a><img src="images/small/08.png" alt="icon" class="img-fluid"> Marquer un(e) ami(e)</div>
+                                                </li>
+                                            </ul>
+                                            {{ form_widget(form.submit) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                    {% for post in posts %}
+                        {% include 'single_post/index.html.twig' %}
+                    {% endfor %}
+                </div>
+                <div class="col-lg-4">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Photos</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <ul class="profile-img-gallary d-flex flex-wrap p-0 m-0">
+                                {% for photo in photos %}
+                                    <li class="col-md-4 col-6 pl-2 pr-0 pb-3"><a href="javascript:void();"><img src="{{ 'uploads/medias' ~asset(photo.file) }}" alt="{{ user.username }}" class="img-fluid" /></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Amis</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <ul class="profile-img-gallary d-flex flex-wrap p-0 m-0">
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
+                                    <a href="javascript:void();">
+                                        <img src="images/user/05.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Anna Rexia</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
+                                    <a href="javascript:void();"><img src="images/user/06.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Tara Zona</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
+                                    <a href="javascript:void();"><img src="images/user/07.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Polly Tech</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
+                                    <a href="javascript:void();"><img src="images/user/08.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Bill Emia</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
+                                    <a href="javascript:void();"><img src="images/user/09.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Moe Fugga</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-3">
+                                    <a href="javascript:void();"><img src="images/user/10.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Hal Appeno </h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-0">
+                                    <a href="javascript:void();"><img src="images/user/07.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Zack Lee</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-0">
+                                    <a href="javascript:void();"><img src="images/user/06.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Terry Aki</h6>
+                                </li>
+                                <li class="col-md-4 col-6 pl-2 pr-0 pb-0">
+                                    <a href="javascript:void();"><img src="images/user/05.jpg" alt="gallary-image" class="img-fluid" /></a>
+                                    <h6 class="mt-2">Greta Life</h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center">
+                    <img src="images/page-img/page-load-loader.gif" alt="loader" style="height: 100px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('#post_media_openener').click(function(e) {
+                e.preventDefault();
+                $('#post_media').click();
+            });
+        });
+    </script>
+{% endblock %}

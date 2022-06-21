@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="iq-edit-list-data">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                                <div class="iq-card">
+                                    <div class="iq-card-header d-flex justify-content-between">
+                                        <div class="iq-header-title">
+                                            <h4 class="card-title">Editer mon profil</h4>
+                                        </div>
+                                    </div>
+                                    <div class="iq-card-body">
+                                        {{ form_start(form) }}
+                                            <div class=" row align-items-center">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="fname">Prenom:</label>
+                                                    {{ form_widget(form.prenom, {'attr' : {'class' : 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="lname">Nom:</label>
+                                                    {{ form_widget(form.nom, {'attr' : {'class' : 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="uname">Pseudonyme:</label>
+                                                    {{ form_widget(form.username, {'attr' : {'class' : 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="cname">Ville:</label>
+                                                    {{ form_widget(form.ville, {'attr' : {'class' : 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="uname">Pseudonyme:</label>
+                                                    {{ form_widget(form.email, {'attr' : {'class' : 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="dob">Date de naissance:</label>
+                                                    <input  class="form-control" id="dob" value="">
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mr-2">Enregister</button>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

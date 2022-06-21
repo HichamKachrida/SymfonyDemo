@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 row m-0 p-0">
+                    <div class="col-sm-12">
+                        <div id="post-modal-data" class="iq-card iq-card-block iq-card-stretch iq-card-height">
+                            <div class="iq-card-header d-flex justify-content-between">
+                                <div class="iq-header-title">
+                                    <h4 class="card-title">Poster vos idées</h4>
+                                </div>
+                            </div>
+                            <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
+                                <div class="d-flex align-items-center">
+                                    <div class="user-img">
+                                        {% if app.user.profilPic is null %}
+                                            <img src="images/user/base.jpg" class="avatar-60 rounded-circle" alt="{{ app.user.username }}">
+                                        {% else %}
+                                            <img src="{{ 'uploads/medias/' ~asset(app.user.profilPic.file) }}" class="avatar-60 rounded-circle" alt="{{ app.user.username }}">
+                                        {% endif %}
+                                    </div>
+                                    <form class="post-text ml-3 w-100" action="javascript:void();">
+                                        <input type="text" class="form-control rounded" placeholder="Poster vos idées..." style="border:none;">
+                                    </form>
+                                </div>
+                                <hr>
+                                <ul class="post-opt-block d-flex align-items-center list-inline m-0 p-0">
+                                    <li class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#"></a><img src="images/small/07.png" alt="icon" class="img-fluid"> Photo/Video</li>
+                                </ul>
+                            </div>
+                            <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
+                                {{ form_start(form) }}
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="post-modalLabel">Poster vos idées</h5>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="ri-close-fill"></i></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="d-flex align-items-center">
+                                                <div class="user-img">
+                                                    {% if app.user.profilPic is null %}
+                                                        <img src="images/user/base.jpg" class="avatar-60 rounded-circle img-fluid" alt="{{ app.user.username }}">
+                                                    {% else %}
+                                                        <img src="{{ 'uploads/medias/' ~asset(app.user.profilPic.file) }}" class="avatar-60 rounded-circle img-fluid" alt="{{ app.user.username }}">
+                                                    {% endif %}
+                                                </div>
+                                                <form class="post-text ml-3 w-100" action="javascript:void();">
+                                                    {{ form_widget(form.content) }}
+                                                    {{ form_widget(form.media) }}
+                                                </form>
+                                            </div>
+                                            <hr>
+                                            <ul class="d-flex flex-wrap align-items-center list-inline m-0 p-0">
+                                                <li class="col-md-6 mb-3">
+                                                    <div class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#" id="post_media_openener"><img src="images/small/07.png" alt="icon" class="img-fluid"> Ajouter une photo</a></div>
+                                                </li>
+                                                <li class="col-md-6 mb-3">
+                                                    <div class="iq-bg-primary rounded p-2 pointer mr-3"><a href="#"></a><img src="images/small/08.png" alt="icon" class="img-fluid"> Marquer un(e) ami(e)</div>
+                                                </li>
+                                            </ul>
+                                            {{ form_widget(form.submit) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                    {% for post in posts %}
+                        {% include 'single_post/index.html.twig' %}
+                    {% endfor %}
+                </div>
+                <div class="col-lg-4">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Evenement(s)</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <ul class="media-story m-0 p-0">
+                                <li class="d-flex mb-4 align-items-center ">
+                                    <img src="images/page-img/s4.jpg" alt="story-img" class="rounded-circle img-fluid">
+                                    <div class="stories-data ml-3">
+                                        <h5>Messe paroissiale</h5>
+                                        <p class="mb-0">Lundi 1 juin</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <img src="images/page-img/s5.jpg" alt="story-img" class="rounded-circle img-fluid">
+                                    <div class="stories-data ml-3">
+                                        <h5>Journée portes ouvertes</h5>
+                                        <p class="mb-0">Samedi 15 juin</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Anniversaire(s)</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <ul class="media-story m-0 p-0">
+                                <li class="d-flex mb-4 align-items-center">
+                                    <img src="images/user/01.jpg" alt="story-img" class="rounded-circle img-fluid">
+                                    <div class="stories-data ml-3">
+                                        <h5>Anna Deverre</h5>
+                                        <p class="mb-0">Aujourd'hui</p>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <img src="images/user/02.jpg" alt="story-img" class="rounded-circle img-fluid">
+                                    <div class="stories-data ml-3">
+                                        <h5>Paul Laurent</h5>
+                                        <p class="mb-0">Dimanche 24 mai</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 text-center">
+                    <img src="images/page-img/page-load-loader.gif" alt="loader" style="height: 100px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('#post_media_openener').click(function(e) {
+                e.preventDefault();
+                $('#post_media').click();
+            });
+        });
+    </script>
+{% endblock %}

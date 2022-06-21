@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <base href="{{ url('admin') }}">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inscrivez-vous</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="css/typography.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Sign in Start -->
+<section class="sign-in-page">
+    <div id="container-inside">
+        <div id="circle-small"></div>
+        <div id="circle-medium"></div>
+        <div id="circle-large"></div>
+        <div id="circle-xlarge"></div>
+        <div id="circle-xxlarge"></div>
+    </div>
+    <div class="container p-0">
+        <div class="row no-gutters">
+            <div class="col-md-6 text-center pt-5">
+                <div class="sign-in-detail text-white">
+                    <a class="sign-in-logo mb-5" href="#"><img src="images/logo-full.png" class="img-fluid" alt="logo"></a>
+                    <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
+                        <div class="item">
+                            <img src="images/login/1.png" class="img-fluid mb-4" alt="logo">
+                            <h4 class="mb-1 text-white">Faîtes de nouvelles connaisssance</h4>
+                            <p>Retrouvez ici des personnes qui partagent votre foi.</p>
+                        </div>
+                        <div class="item">
+                            <img src="images/login/2.png" class="img-fluid mb-4" alt="logo">
+                            <h4 class="mb-1 text-white">Connectez-vous partout</h4>
+                            <p>Retrouvez les membres de notre communauté dans toute la France.</p>
+                        </div>
+                        <div class="item">
+                            <img src="images/login/3.png" class="img-fluid mb-4" alt="logo">
+                            <h4 class="mb-1 text-white">Crèez vos événements</h4>
+                            <p>Et partagez votre passion avec tous nos membres</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-white pt-5">
+                <div class="sign-in-from">
+                    <h1 class="mb-0">Inscrivez-vous</h1>
+                    <p>Completez le formulaire pour vous inscrire gratuitement.</p>
+                    {{ form_start(registrationForm, {'attr' : {'class' : 'mt-4'}}) }}
+
+                    {% if not registrationForm.vars.valid or errors is defined %}
+                        <p class="error">
+                            {% if registrationForm.vars.errors.form.getErrors(true) is defined %}
+                                {% for error in registrationForm.vars.errors.form.getErrors(true) %}
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <div class="alert-text">{{ error.message }}</div>
+                                        <div class="alert-close">
+                                            <i class="flaticon2-cross kt-icon-sm" data-dismiss="alert"></i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if errors is defined %}
+                                {% for error in errors %}
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <div class="alert-text">{{ error }}</div>
+                                        <div class="alert-close">
+                                            <i class="flaticon2-cross kt-icon-sm" data-dismiss="alert"></i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </p>
+                    {% endif %}
+
+                        <div class="form-group">
+                            <label>Votre pseudonyme</label>
+                            {{ form_widget(registrationForm.username, {'attr' : {'class' : 'form-control mb-0', 'placeholder' : 'Entrez votre pseudonyme'}}) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Votre email</label>
+                            {{ form_widget(registrationForm.email, {'attr' : {'class' : 'form-control mb-0', 'placeholder' : 'Entrez votre email'}}) }}
+                        </div>
+                        <div class="form-group">
+                            <label>Mot de passe</label>
+                            {{ form_widget(registrationForm.plainPassword, {'attr' : {'class' : 'form-control mb-0', 'placeholder' : 'Mot de passe'}}) }}
+                        </div>
+                        <div class="d-inline-block w-100">
+                            <div class="d-inline-block mt-2 pt-1">
+                                {{ form_widget(registrationForm.agreeTerms) }}
+                                <label>J'accepte les <a href="#">condition d'utilisation</a>.</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right">S'inscrire</button>
+                        </div>
+                        <div class="sign-info">
+                            <span class="dark-color d-inline-block line-height-2">Vous avez déjà un compte ? <a href="{{ url('central_app_login') }}">Connectez-vous</a></span>
+                        </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Sign in END -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Appear JavaScript -->
+<script src="js/jquery.appear.js"></script>
+<!-- Countdown JavaScript -->
+<script src="js/countdown.min.js"></script>
+<!-- Counterup JavaScript -->
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<!-- Wow JavaScript -->
+<script src="js/wow.min.js"></script>
+<!-- lottie JavaScript -->
+<script src="js/lottie.js"></script>
+<!-- Apexcharts JavaScript -->
+<script src="js/apexcharts.js"></script>
+<!-- Slick JavaScript -->
+<script src="js/slick.min.js"></script>
+<!-- Select2 JavaScript -->
+<script src="js/select2.min.js"></script>
+<!-- Owl Carousel JavaScript -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Magnific Popup JavaScript -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- Smooth Scrollbar JavaScript -->
+<script src="js/smooth-scrollbar.js"></script>
+<!-- Chart Custom JavaScript -->
+<script src="js/chart-custom.js"></script>
+<!-- Custom JavaScript -->
+<script src="js/custom.js"></script>
+</body>
+</html>

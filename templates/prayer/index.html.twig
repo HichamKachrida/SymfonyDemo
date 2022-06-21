@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prière de l'heure{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="iq-card position-relative inner-page-bg bg-primary" style="height: 150px;">
+                        <div class="inner-page-title">
+                            <h3 class="text-white">Prière de l'heure : {{ "now"|date("H") }}h</h3>
+                            <p class="text-white">A chaque heure une prière</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">{{ prayer.title }}</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <p>{{ prayer.content|nl2br }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Wrapper END -->
+
+{% endblock %}

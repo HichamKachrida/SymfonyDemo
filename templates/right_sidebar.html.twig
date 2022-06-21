@@ -1,0 +1,31 @@
+<!-- Right Sidebar Panel Start-->
+<div class="right-sidebar-mini right-sidebar">
+    <div class="right-sidebar-panel p-0">
+        <div class="iq-card shadow-none">
+            <div class="iq-card-body p-0">
+                <div class="media-height p-3">
+                    {% for user in friends %}
+                    <div class="media align-items-center mb-4">
+                        <div class="iq-profile-avatar status-online">
+                            {% if user.profilPic is null %}
+                                <img src="images/user/base.jpg" class="rounded-circle avatar-50" alt="{{ user.username }}">
+                            {% else %}
+                                <img src="{{ 'uploads/medias/' ~asset(user.profilPic.file) }}" class="rounded-circle avatar-50" alt="{{ user.username }}">
+                            {% endif %}
+                        </div>
+                        <div class="media-body ml-3">
+                            <h6 class="mb-0"><a href="{{path('chat', {'id' : user.id})}}">{{ user.username }}</a></h6>
+                            <p class="mb-0">En ligne</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="right-sidebar-toggle bg-primary mt-3">
+                    <i class="ri-arrow-left-line side-left-icon"></i>
+                    <i class="ri-arrow-right-line side-right-icon"><span class="ml-3 d-inline-block">Fermer</span></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Right Sidebar Panel End-->

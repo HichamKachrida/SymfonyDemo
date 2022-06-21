@@ -1,0 +1,42 @@
+<!-- Sidebar  -->
+<div class="iq-sidebar">
+    <div id="sidebar-scrollbar">
+        <nav class="iq-sidebar-menu">
+            <ul id="iq-sidebar-toggle" class="iq-menu">
+                <li class="active">
+                    <a href="{{ path('index') }}" class="iq-waves-effect"><i class="las la-newspaper"></i><span>Accueil</span></a>
+                </li>
+                <li>
+                    <a href="{{ path('profil', {'id' : app.user.id }) }}" class="iq-waves-effect"><i class="las la-user"></i><span>Profil</span></a>
+                </li>
+                <li>
+                    <a href="{{ path('shop') }}" class="iq-waves-effect"><i class="las la-bell"></i><span>Boutique en ligne</span></a>
+                </li>
+                <li>
+                    <a href="{{ path('friends') }}" class="iq-waves-effect"><i class="las la-user-friends"></i><span>Liste d'amis</span></a>
+                </li>
+                <li>
+                    <a href="{{ path('friend_request') }}" class="iq-waves-effect"><i class="las la-anchor"></i><span>Demandes d'amis</span></a>
+                </li>
+                <li>
+                    <a href="{{ path('events') }}" class="iq-waves-effect"><i class="las la-film"></i><span>Evenements</span></a>
+                </li>
+                <li>
+                    <a href="{{ path('notifications') }}" class="iq-waves-effect"><i class="las la-bell"></i><span>Notifications</span></a>
+                </li>
+                <li>
+                    <a href="javascript:void();" class="iq-waves-effect"><i class="las la-birthday-cake"></i><span>Anniversaires</span></a>
+                </li>
+                <li>
+                    <a href="#mailbox" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-mail-line"></i><span>Messagerie</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                    <ul id="mailbox" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="{{ path('message') }}"><i class="ri-inbox-line"></i>Boite de reception</a></li>
+                        <li><a href="javascript:void();"><i class="ri-edit-line"></i>Envoyer un message</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="p-3"></div>
+    </div>
+</div>
